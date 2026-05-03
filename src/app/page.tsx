@@ -221,7 +221,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-center gap-3 text-slate-300">
                       <Clock className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                      Checks take under 5 minutes
+                        DVSA-compliant checks in 10 minutes
                     </li>
                   </ul>
                 </div>

@@ -3,75 +3,74 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
   ClipboardCheck,
-  Camera,
   AlertTriangle,
   LayoutDashboard,
   WifiOff,
-  FileText,
   CheckCircle,
   ArrowRight,
   Smartphone,
   Shield,
   Clock,
+  Wrench,
 } from "lucide-react";
 
 const features = [
   {
     icon: ClipboardCheck,
-    title: "Digital Daily Checks",
+    title: "Complete Vehicle Inspections",
     description:
-      "Guided checklists walk drivers through complete vehicle inspections on their phone. No more paper forms.",
+      "Guided walkarounds covering tyres, lights, brakes, bodywork, fuel, and AdBlue levels. GPS location, reg plate photo, and digital signature recorded at every check.",
   },
   {
-    icon: Camera,
-    title: "Photo Evidence",
+    icon: Shield,
+    title: "DVSA Compliance Built In",
     description:
-      "Capture photos of defects, damage, or vehicle condition. Visual proof for every inspection.",
+      "Timestamped records drivers can show at a DVSA roadside stop. Full check history ready for managers to present at site inspections. One check per driver per vehicle per day — no duplicates.",
   },
   {
     icon: AlertTriangle,
-    title: "Instant Defect Reporting",
+    title: "Defect Management",
     description:
-      "Issues flagged immediately to managers. Know about problems before vehicles leave the yard.",
+      "Defects are logged automatically when a check item fails. Workshop marks them resolved, and drivers must re-check the vehicle before it goes back on the road.",
   },
   {
     icon: LayoutDashboard,
-    title: "Fleet Dashboard",
+    title: "Manager Dashboard",
     description:
-      "View all vehicles, drivers, and check history in one place. Complete visibility across your fleet.",
+      "Full check history with reg plate photos and per-defect details. Separate defects view, vehicle management, and driver management all in one place.",
   },
   {
     icon: WifiOff,
     title: "Works Offline",
     description:
-      "No signal? No problem. Checks work without internet and sync automatically when back online.",
+      "Checks work without internet and sync automatically when back online. A completed check survives logout, app close, and view switching — nothing gets lost.",
   },
   {
-    icon: FileText,
-    title: "Full Audit Trail",
+    icon: Smartphone,
+    title: "Easy to Get Started",
     description:
-      "Every check timestamped and stored. Ready for DVSA inspections and compliance audits.",
+      "In-app onboarding walks you through a demo check before going live. 7-day free trial with Stripe-powered billing — no charge until your trial ends.",
   },
 ];
 
 const steps = [
   {
     step: "1",
-    title: "Driver Opens the App",
+    title: "Try the Demo",
     description:
-      "Select the vehicle and start the daily walkaround check. Works on any smartphone.",
+      "Complete an in-app demo check during onboarding so you see exactly how CheckaTruck works before going live with your fleet.",
   },
   {
     step: "2",
     title: "Complete the Inspection",
     description:
-      "Follow the guided checklist covering all DVSA requirements. Add photos where needed.",
+      "Drivers follow the guided walkaround on their phone. GPS location is recorded, photos added, and the check signed off digitally.",
   },
   {
     step: "3",
-    title: "Submit and Go",
+    title: "Managers Stay in Control",
     description:
-      "Sign off the check digitally. Defects are reported instantly, and records are stored securely.",
+      "Review check history, track open defects, and ensure every vehicle has been inspected — all from the manager dashboard.",
   },
 ];
 
@@ -107,7 +106,7 @@ export default function Home() {
                   href="https://app.checkatruck.co.uk"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-8 py-4 text-lg font-semibold text-white hover:bg-orange-600 transition-colors"
                 >
-                  Get Started
+                  Start Free Trial
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <Link
@@ -121,7 +120,7 @@ export default function Home() {
               <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-500" />
-                  No setup fees
+                  7-day free trial
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-500" />
@@ -217,11 +216,11 @@ export default function Home() {
                     </li>
                     <li className="flex items-center gap-3 text-slate-300">
                       <WifiOff className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                      Full offline support
+                      Offline support — checks sync when back online
                     </li>
                     <li className="flex items-center gap-3 text-slate-300">
                       <Clock className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                        DVSA-compliant checks in 10 minutes
+                      Completed checks survive logout and app close
                     </li>
                   </ul>
                 </div>
@@ -238,8 +237,50 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Customisation Section */}
+        <section className="py-20 md:py-32 bg-slate-800/50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 border border-orange-500/20 px-4 py-2 text-sm text-orange-400 mb-6">
+                  <Wrench className="h-4 w-4" />
+                  Built around your fleet
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white">
+                  Customised to your vehicles and your checks
+                </h2>
+                <p className="mt-4 text-lg text-slate-400">
+                  Our development team works closely with every new customer to configure
+                  the inspection forms around their specific vehicles and existing check
+                  processes.
+                </p>
+                <p className="mt-4 text-slate-400">
+                  If your vehicles aren&apos;t already in the system, just send us a copy of
+                  your current vehicle inspection sheets — we&apos;ll set everything up before
+                  you go live.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
+                <ul className="space-y-5">
+                  {[
+                    "Inspection areas tailored to your vehicle types",
+                    "Check items configured to match your existing forms",
+                    "Direct support from the development team during setup",
+                    "Go live with checks that actually match your fleet",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-slate-300">
+                      <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
-        <section id="pricing" className="py-20 md:py-32 bg-slate-800/50">
+        <section id="pricing" className="py-20 md:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -254,6 +295,9 @@ export default function Home() {
             <div className="max-w-lg mx-auto">
               <div className="rounded-2xl bg-slate-800 border-2 border-orange-500 p-8 md:p-10">
                 <div className="text-center">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 text-sm text-orange-400 mb-4">
+                    7-day free trial — no charge until trial ends
+                  </div>
                   <h3 className="text-xl font-semibold text-white">Per Vehicle</h3>
                   <div className="mt-6">
                     <span className="text-5xl font-bold text-white">70p</span>
@@ -273,23 +317,23 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Photo uploads included
+                    Photo uploads — reg plates and defects
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Fleet management dashboard
+                    GPS location recording
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Offline capability
+                    Manager dashboard & defects view
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Full audit trail & exports
+                    Offline support with auto-sync
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Email support
+                    DVSA-ready check history & audit trail
                   </li>
                 </ul>
 
@@ -297,16 +341,19 @@ export default function Home() {
                   href="https://app.checkatruck.co.uk"
                   className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-8 py-4 text-lg font-semibold text-white hover:bg-orange-600 transition-colors"
                 >
-                  Get Started
+                  Start Free Trial
                   <ArrowRight className="h-5 w-5" />
                 </a>
+                <p className="mt-4 text-center text-sm text-slate-500">
+                  Powered by Stripe. Cancel anytime.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 md:py-32">
+        <section className="py-20 md:py-32 bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 p-8 md:p-16 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -314,14 +361,14 @@ export default function Home() {
               </h2>
               <p className="mt-4 text-lg text-orange-100 max-w-2xl mx-auto">
                 Join fleet operators across the UK who have switched from paper to
-                CheckaTruck. Get started in minutes.
+                CheckaTruck. Start your free trial today.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="https://app.checkatruck.co.uk"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-orange-600 hover:bg-orange-50 transition-colors"
                 >
-                  Get Started
+                  Start Free Trial
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <a

@@ -31,7 +31,7 @@ const features = [
     icon: AlertTriangle,
     title: "Defect Management",
     description:
-      "Defects are logged automatically when a check item fails. Workshop marks them resolved, and drivers must re-check the vehicle before it goes back on the road.",
+      "Defects are logged automatically when a check item fails. The transport manager marks them as resolved from the app, and the driver must re-check the vehicle before it goes back on the road.",
   },
   {
     icon: LayoutDashboard,
@@ -287,66 +287,139 @@ export default function Home() {
                 Simple, transparent pricing
               </h2>
               <p className="mt-4 text-lg text-slate-400">
-                No hidden fees. No long-term contracts. Just straightforward pricing
-                that scales with your fleet.
+                No hidden fees. No long-term contracts. Pay only for the features your fleet needs.
               </p>
             </div>
 
-            <div className="max-w-lg mx-auto">
-              <div className="rounded-2xl bg-slate-800 border-2 border-orange-500 p-8 md:p-10">
-                <div className="text-center">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 border border-orange-500/20 px-4 py-1.5 text-sm text-orange-400 mb-4">
-                    7-day free trial — no charge until trial ends
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Per Vehicle</h3>
-                  <div className="mt-6">
-                    <span className="text-5xl font-bold text-white">70p</span>
-                    <span className="text-xl text-slate-400">/week</span>
-                  </div>
-                  <p className="mt-2 text-slate-400">per vehicle</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              {/* Comply */}
+              <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
+                <h3 className="text-xl font-semibold text-white">Comply</h3>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-white">70p</span>
+                  <span className="text-slate-400"> /vehicle/week</span>
                 </div>
-
-                <ul className="mt-8 space-y-4">
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Unlimited daily checks
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Unlimited drivers
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Photo uploads — reg plates and defects
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    GPS location recording
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Manager dashboard & defects view
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    Offline support with auto-sync
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-300">
-                    <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                    DVSA-ready check history & audit trail
-                  </li>
+                <p className="mt-3 text-sm text-slate-400">The essentials of staying legally compliant.</p>
+                <ul className="mt-8 space-y-3">
+                  {[
+                    "DVSA-compliant daily walk-around checks",
+                    "Defect logging and tracking",
+                    "Full audit trail for managers",
+                    "GPS location and digital signature per check",
+                    "Offline support with auto-sync",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
-
                 <a
                   href="https://app.checkatruck.co.uk"
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-8 py-4 text-lg font-semibold text-white hover:bg-orange-600 transition-colors"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white hover:bg-slate-700 transition-colors"
                 >
                   Start Free Trial
-                  <ArrowRight className="h-5 w-5" />
                 </a>
-                <p className="mt-4 text-center text-sm text-slate-500">
-                  Powered by Stripe. Cancel anytime.
-                </p>
+              </div>
+
+              {/* Manage — featured */}
+              <div className="rounded-2xl bg-slate-800 border-2 border-orange-500 p-8 relative">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span className="inline-flex items-center rounded-full bg-orange-500 px-4 py-1 text-xs font-semibold text-white">
+                    Most Popular
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">Manage</h3>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-white">£1.50</span>
+                  <span className="text-slate-400"> /vehicle/week</span>
+                </div>
+                <p className="mt-3 text-sm text-slate-400">Everything in Comply, plus tools to run your operation day to day.</p>
+                <ul className="mt-8 space-y-3">
+                  {[
+                    "Everything in Comply",
+                    "Create and assign jobs",
+                    "Track loads from collection to delivery",
+                    "MOT and service due date monitoring",
+                    "Automated compliance reminders",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://app.checkatruck.co.uk"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white hover:bg-orange-600 transition-colors"
+                >
+                  Start Free Trial
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+
+              {/* Control */}
+              <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
+                <h3 className="text-xl font-semibold text-white">Control</h3>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-white">£2.50</span>
+                  <span className="text-slate-400"> /vehicle/week</span>
+                </div>
+                <p className="mt-3 text-sm text-slate-400">Everything in Manage, plus the commercial side.</p>
+                <ul className="mt-8 space-y-3">
+                  {[
+                    "Everything in Manage",
+                    "Send invoices directly to clients",
+                    "Online card payments via Stripe",
+                    "Track paid, outstanding, and overdue",
+                    "Analytics dashboard — revenue, fleet health, compliance",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://app.checkatruck.co.uk"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white hover:bg-slate-700 transition-colors"
+                >
+                  Start Free Trial
+                </a>
+              </div>
+            </div>
+
+            <p className="mt-8 text-center text-sm text-slate-400">
+              All plans include a 7-day free trial. Volume discounts apply for fleets of 11 vehicles and above.
+            </p>
+
+            {/* Volume Discounts */}
+            <div className="mt-16 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-white text-center mb-8">Volume Discounts</h3>
+              <div className="rounded-2xl bg-slate-800 border border-slate-700 overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-700">
+                      <th className="px-6 py-4 text-left font-medium text-slate-400">Fleet Size</th>
+                      <th className="px-6 py-4 text-right font-medium text-slate-400">Saving vs. standard rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { size: "1–10 vehicles", saving: "Standard rate", highlight: false },
+                      { size: "11–25 vehicles", saving: "10% off", highlight: true },
+                      { size: "26–50 vehicles", saving: "14% off", highlight: true },
+                      { size: "51+ vehicles", saving: "20% off", highlight: true },
+                    ].map((row, i) => (
+                      <tr key={row.size} className={i < 3 ? "border-b border-slate-700" : ""}>
+                        <td className="px-6 py-4 text-white">{row.size}</td>
+                        <td className={`px-6 py-4 text-right font-medium ${row.highlight ? "text-orange-400" : "text-slate-400"}`}>
+                          {row.saving}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

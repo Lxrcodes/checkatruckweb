@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PricingSection from "@/components/PricingSection";
+import appScreenshot from "@/img/IMG_6604-left.png";
 import {
   ClipboardCheck,
   AlertTriangle,
@@ -270,12 +272,11 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="relative">
-                  <div className="aspect-[4/3] rounded-xl bg-slate-700 border border-slate-600 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <Smartphone className="h-16 w-16 text-orange-500 mx-auto" />
-                      <p className="mt-4 text-slate-400">Mobile-first design</p>
-                    </div>
-                  </div>
+                  <Image
+                    src={appScreenshot}
+                    alt="CheckATruck app on mobile"
+                    className="rounded-xl w-1/2 h-auto mx-auto"
+                  />
                 </div>
               </div>
             </div>

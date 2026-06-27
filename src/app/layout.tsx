@@ -8,12 +8,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CheckaTruck - Daily Vehicle Walkaround Checks for Commercial Fleets",
-  description: "Digital daily vehicle checks for commercial fleets. DVSA compliant walkaround inspections with photo evidence, defect reporting, and offline capability. 70p per vehicle per week.",
-  keywords: ["vehicle checks", "walkaround checks", "DVSA compliance", "fleet management", "HGV checks", "commercial vehicle inspection"],
+  title: "CheckATruck — Fleet Compliance and Management for UK HGV Fleets",
+  description: "Digital daily vehicle checks, job management and professional invoicing for HGV, tipper, grab and plant fleets. DVSA compliant. No vehicle minimum. 7-day free trial, no card required.",
+  keywords: ["vehicle checks", "walkaround checks", "DVSA compliance", "fleet management", "HGV checks", "commercial vehicle inspection", "waste transfer notes", "fleet invoicing", "tipper fleet software"],
   openGraph: {
-    title: "CheckaTruck - Daily Vehicle Walkaround Checks",
-    description: "Digital daily vehicle checks for commercial fleets. DVSA compliant, works offline.",
+    title: "CheckATruck — Fleet Compliance and Management for UK HGV Fleets",
+    description: "From daily walkaround checks to digital invoicing. Built for HGV, tipper, grab and plant fleets. DVSA compliant. 7-day free trial.",
     type: "website",
   },
 };

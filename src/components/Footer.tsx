@@ -14,8 +14,8 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">CheckaTruck</span>
             </Link>
             <p className="mt-4 text-slate-400 max-w-md">
-              Simple, affordable daily vehicle checks for commercial fleets.
-              Stay DVSA compliant with digital walkaround inspections.
+              Digital vehicle compliance and fleet management for HGV, tipper, grab and
+              plant fleets. From daily walkaround checks to digital invoicing.
             </p>
           </div>
 

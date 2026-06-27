@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PricingSection from "@/components/PricingSection";
 import {
   ClipboardCheck,
   AlertTriangle,
@@ -12,65 +13,80 @@ import {
   Shield,
   Clock,
   Wrench,
+  Briefcase,
+  FileText,
+  Receipt,
 } from "lucide-react";
 
 const features = [
   {
     icon: ClipboardCheck,
-    title: "Complete Vehicle Inspections",
+    tier: "All plans",
+    title: "DVSA-Compliant Daily Checks",
     description:
-      "Guided walkarounds covering tyres, lights, brakes, bodywork, fuel, and AdBlue levels. GPS location, reg plate photo, and digital signature recorded at every check.",
-  },
-  {
-    icon: Shield,
-    title: "DVSA Compliance Built In",
-    description:
-      "Timestamped records drivers can show at a DVSA roadside stop. Full check history ready for managers to present at site inspections. One check per driver per vehicle per day — no duplicates.",
+      "Guided walkarounds covering tyres, lights, brakes, bodywork, fuel and AdBlue. GPS location, reg plate photo and digital signature recorded at every check. MOT and PMI date tracking included.",
   },
   {
     icon: AlertTriangle,
+    tier: "All plans",
     title: "Defect Management",
     description:
-      "Defects are logged automatically when a check item fails. The transport manager marks them as resolved from the app, and the driver must re-check the vehicle before it goes back on the road.",
+      "Defects are graded critical, major or minor. Vehicles can be marked Pass, Fail or Do-Not-Drive. Drivers must re-check before a failed vehicle returns to the road.",
   },
   {
     icon: LayoutDashboard,
-    title: "Manager Dashboard",
+    tier: "All plans",
+    title: "Manager Dashboard & Audit Trail",
     description:
-      "Full check history with reg plate photos and per-defect details. Separate defects view, vehicle management, and driver management all in one place.",
+      "Full check history with reg plate photos and per-defect detail. Track open defects, monitor vehicle compliance and manage your drivers — all in one place.",
   },
   {
-    icon: WifiOff,
-    title: "Works Offline",
+    icon: Briefcase,
+    tier: "Manage & Control",
+    title: "Job & Load Management",
     description:
-      "Checks work without internet and sync automatically when back online. A completed check survives logout, app close, and view switching — nothing gets lost.",
+      "Create and assign jobs with materials, load progress and collection-to-delivery tracking. Map collection and disposal locations. Monitor revenue by job from the dashboard.",
   },
   {
-    icon: Smartphone,
-    title: "Easy to Get Started",
+    icon: FileText,
+    tier: "Manage & Control",
+    title: "Digital Waste Transfer Notes",
     description:
-      "In-app onboarding walks you through a demo check before going live. 7-day free trial with Stripe-powered billing — no charge until your trial ends.",
+      "Generate compliant WTNs on the job. DEFRA's Digital Waste Tracking mandate comes into force October 2026 — CheckATruck operators on Manage or Control are already ahead of it.",
+  },
+  {
+    icon: Receipt,
+    tier: "Control",
+    title: "Invoicing & Online Payments",
+    description:
+      "Send professional invoices with VAT, share a public payment link, and accept card payments via Stripe. Money lands directly in your account — no third party in between.",
   },
 ];
+
+const tierColour: Record<string, string> = {
+  "All plans": "bg-slate-700 text-slate-300",
+  "Manage & Control": "bg-orange-500/15 border border-orange-500/20 text-orange-400",
+  "Control": "bg-orange-500/25 border border-orange-500/30 text-orange-300",
+};
 
 const steps = [
   {
     step: "1",
-    title: "Try the Demo",
+    title: "Set Up Your Fleet",
     description:
-      "Complete an in-app demo check during onboarding so you see exactly how CheckaTruck works before going live with your fleet.",
+      "Add your vehicles and drivers. Our team configures your check templates to match your existing inspection sheets — free for every operator.",
   },
   {
     step: "2",
-    title: "Complete the Inspection",
+    title: "Run Your Operation",
     description:
-      "Drivers follow the guided walkaround on their phone. GPS location is recorded, photos added, and the check signed off digitally.",
+      "Drivers complete walkaround checks on their phones. Managers assign jobs, track loads and monitor the whole fleet from one dashboard.",
   },
   {
     step: "3",
-    title: "Managers Stay in Control",
+    title: "Stay Compliant and Get Paid",
     description:
-      "Review check history, track open defects, and ensure every vehicle has been inspected — all from the manager dashboard.",
+      "Full DVSA audit trail always to hand. Digital WTNs ready for the DEFRA mandate. Professional invoices with Stripe-powered online payments.",
   },
 ];
 
@@ -79,7 +95,7 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Hero */}
         <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent" />
@@ -88,17 +104,17 @@ export default function Home() {
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 border border-orange-500/20 px-4 py-2 text-sm text-orange-400 mb-6">
                 <Shield className="h-4 w-4" />
-                DVSA Compliant
+                DVSA Compliant · HGV, Tipper, Grab &amp; Plant
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-                Daily walkaround checks,{" "}
-                <span className="text-orange-500">done in minutes</span>
+                Fleet compliance and job management,{" "}
+                <span className="text-orange-500">built for HGV operators</span>
               </h1>
 
               <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-                Digital vehicle inspections for commercial fleets. Keep your drivers safe,
-                your fleet compliant, and your paperwork in order.
+                From the morning walkaround check to getting paid — CheckATruck covers the
+                full operation. Start free, scale as you grow.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -120,31 +136,31 @@ export default function Home() {
               <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-500" />
-                  7-day free trial
+                  7-day free trial, no card required
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-500" />
-                  No contracts
+                  No vehicle minimum
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-500" />
-                  Cancel anytime
+                  Free check template setup
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Features */}
         <section id="features" className="py-20 md:py-32 bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Everything you need for compliant daily checks
+                From compliance to invoicing — all in one platform
               </h2>
               <p className="mt-4 text-lg text-slate-400">
-                Purpose-built for HGVs, tippers, and commercial vehicles. Simple tools
-                that drivers actually want to use.
+                Built for HGV, tipper, grab and plant fleets. Simple tools
+                that drivers actually use, and the commercial tools operators actually need.
               </p>
             </div>
 
@@ -154,8 +170,15 @@ export default function Home() {
                   key={feature.title}
                   className="rounded-2xl bg-slate-800 border border-slate-700 p-8 hover:border-orange-500/50 transition-colors"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-500/10">
-                    <feature.icon className="h-6 w-6 text-orange-500" />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-500/10 flex-shrink-0">
+                      <feature.icon className="h-6 w-6 text-orange-500" />
+                    </div>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${tierColour[feature.tier]}`}
+                    >
+                      {feature.tier}
+                    </span>
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-white">
                     {feature.title}
@@ -167,15 +190,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How It Works Section */}
+        {/* DEFRA callout banner */}
+        <section className="py-10 bg-orange-500/8 border-y border-orange-500/20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+              <div className="flex-shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500/20 border border-orange-500/30">
+                <AlertTriangle className="h-6 w-6 text-orange-400" />
+              </div>
+              <div>
+                <p className="text-white font-semibold">
+                  DEFRA Digital Waste Tracking mandate — October 2026
+                </p>
+                <p className="mt-1 text-slate-300 text-sm max-w-3xl">
+                  DEFRA is making digital Waste Transfer Notes a legal requirement for waste
+                  carriers from October 2026. CheckATruck operators on the Manage or Control
+                  plan already generate compliant WTNs digitally. Start now and be ready
+                  before the deadline — no last-minute scramble.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
         <section id="how-it-works" className="py-20 md:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                How CheckaTruck works
+                How CheckATruck works
               </h2>
               <p className="mt-4 text-lg text-slate-400">
-                Get started in minutes. No training required.
+                Set up in a day. No training required. No call centre — direct access to
+                the team who built it.
               </p>
             </div>
 
@@ -202,17 +248,16 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                   <h3 className="text-2xl font-bold text-white">
-                    Built for drivers on the go
+                    Works on any device, anywhere
                   </h3>
                   <p className="mt-4 text-slate-400">
-                    CheckaTruck is a Progressive Web App (PWA) that works like a native
-                    app but installs instantly from your browser. No app store downloads,
-                    no waiting for updates.
+                    CheckATruck installs instantly from the browser — no app store, no
+                    updates to chase. It works like a native app on any smartphone or tablet.
                   </p>
                   <ul className="mt-6 space-y-3">
                     <li className="flex items-center gap-3 text-slate-300">
                       <Smartphone className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                      Works on any smartphone or tablet
+                      Any smartphone or tablet — iOS or Android
                     </li>
                     <li className="flex items-center gap-3 text-slate-300">
                       <WifiOff className="h-5 w-5 text-orange-500 flex-shrink-0" />
@@ -237,7 +282,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Customisation Section */}
+        {/* Customisation */}
         <section className="py-20 md:py-32 bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -247,26 +292,25 @@ export default function Home() {
                   Built around your fleet
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white">
-                  Customised to your vehicles and your checks
+                  Check templates set up free for your vehicles
                 </h2>
                 <p className="mt-4 text-lg text-slate-400">
-                  Our development team works closely with every new customer to configure
-                  the inspection forms around their specific vehicles and existing check
-                  processes.
+                  Every operator gets their inspection forms configured before going live —
+                  at no extra cost. Send us your current paper sheets and we&apos;ll set
+                  everything up to match.
                 </p>
                 <p className="mt-4 text-slate-400">
-                  If your vehicles aren&apos;t already in the system, just send us a copy of
-                  your current vehicle inspection sheets — we&apos;ll set everything up before
-                  you go live.
+                  You deal directly with the development team. No call centre, no support
+                  tickets that go nowhere.
                 </p>
               </div>
               <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
                 <ul className="space-y-5">
                   {[
-                    "Inspection areas tailored to your vehicle types",
-                    "Check items configured to match your existing forms",
-                    "Direct support from the development team during setup",
-                    "Go live with checks that actually match your fleet",
+                    "Free check template setup for every new operator",
+                    "Configured to your specific vehicle types — HGV, tipper, grab, plant",
+                    "Matched to your existing inspection sheets",
+                    "Direct access to the development team, not a call centre",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-slate-300">
                       <CheckCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
@@ -279,162 +323,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="py-20 md:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Simple, transparent pricing
-              </h2>
-              <p className="mt-4 text-lg text-slate-400">
-                No hidden fees. No long-term contracts. Pay only for the features your fleet needs.
-              </p>
-            </div>
+        {/* Pricing */}
+        <PricingSection />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-              {/* Comply */}
-              <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
-                <h3 className="text-xl font-semibold text-white">Comply</h3>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-white">70p</span>
-                  <span className="text-slate-400"> /vehicle/week</span>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">The essentials of staying legally compliant.</p>
-                <ul className="mt-8 space-y-3">
-                  {[
-                    "DVSA-compliant daily walk-around checks",
-                    "Defect logging and tracking",
-                    "Full audit trail for managers",
-                    "GPS location and digital signature per check",
-                    "Offline support with auto-sync",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="https://app.checkatruck.co.uk"
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white hover:bg-slate-700 transition-colors"
-                >
-                  Start Free Trial
-                </a>
-              </div>
-
-              {/* Manage — featured */}
-              <div className="rounded-2xl bg-slate-800 border-2 border-orange-500 p-8 relative">
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-orange-500 px-4 py-1 text-xs font-semibold text-white">
-                    Most Popular
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold text-white">Manage</h3>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-white">£1.50</span>
-                  <span className="text-slate-400"> /vehicle/week</span>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">Everything in Comply, plus tools to run your operation day to day.</p>
-                <ul className="mt-8 space-y-3">
-                  {[
-                    "Everything in Comply",
-                    "Create and assign jobs",
-                    "Track loads from collection to delivery",
-                    "MOT and service due date monitoring",
-                    "Automated compliance reminders",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="https://app.checkatruck.co.uk"
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white hover:bg-orange-600 transition-colors"
-                >
-                  Start Free Trial
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-
-              {/* Control */}
-              <div className="rounded-2xl bg-slate-800 border border-slate-700 p-8">
-                <h3 className="text-xl font-semibold text-white">Control</h3>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-white">£2.50</span>
-                  <span className="text-slate-400"> /vehicle/week</span>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">Everything in Manage, plus the commercial side.</p>
-                <ul className="mt-8 space-y-3">
-                  {[
-                    "Everything in Manage",
-                    "Send invoices directly to clients",
-                    "Online card payments via Stripe",
-                    "Track paid, outstanding, and overdue",
-                    "Analytics dashboard — revenue, fleet health, compliance",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                      <CheckCircle className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="https://app.checkatruck.co.uk"
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white hover:bg-slate-700 transition-colors"
-                >
-                  Start Free Trial
-                </a>
-              </div>
-            </div>
-
-            <p className="mt-8 text-center text-sm text-slate-400">
-              All plans include a 7-day free trial. Volume discounts apply for fleets of 11 vehicles and above.
-            </p>
-
-            {/* Volume Discounts */}
-            <div className="mt-16 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-white text-center mb-8">Volume Discounts</h3>
-              <div className="rounded-2xl bg-slate-800 border border-slate-700 overflow-hidden">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-slate-700">
-                      <th className="px-6 py-4 text-left font-medium text-slate-400">Fleet Size</th>
-                      <th className="px-6 py-4 text-right font-medium text-slate-400">Saving vs. standard rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { size: "1–10 vehicles", saving: "Standard rate", highlight: false },
-                      { size: "11–25 vehicles", saving: "10% off", highlight: true },
-                      { size: "26–50 vehicles", saving: "14% off", highlight: true },
-                      { size: "51+ vehicles", saving: "20% off", highlight: true },
-                    ].map((row, i) => (
-                      <tr key={row.size} className={i < 3 ? "border-b border-slate-700" : ""}>
-                        <td className="px-6 py-4 text-white">{row.size}</td>
-                        <td className={`px-6 py-4 text-right font-medium ${row.highlight ? "text-orange-400" : "text-slate-400"}`}>
-                          {row.saving}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
+        {/* CTA */}
         <section className="py-20 md:py-32 bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 p-8 md:p-16 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Ready to simplify your daily checks?
+                Ready to get your fleet on CheckATruck?
               </h2>
               <p className="mt-4 text-lg text-orange-100 max-w-2xl mx-auto">
-                Join fleet operators across the UK who have switched from paper to
-                CheckaTruck. Start your free trial today.
+                7-day free trial, no card required. No vehicle minimum. Our team sets up
+                your check templates before you go live.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
